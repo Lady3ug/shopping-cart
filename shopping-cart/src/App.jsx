@@ -1,4 +1,21 @@
+import { useState } from "react";
+import BudgetForm from "./components/BudgetForm";
+import Results from "./components/Results";
+
 function App() {
-  return <div className="p-4 bg-blue-500 text-white">Hello Tailwind</div>;
+  const [data, setData] = useState(null);
+
+  const handleCalculate = (formData) => {
+    setData(formData);
+  };
+
+  return (
+    <div>
+      <h1>Budget & Savings Predictor</h1>
+      <BudgetForm onSubmit={handleCalculate} />
+      {data && <Results {...data} />}
+    </div>
+  );
 }
+
 export default App;
